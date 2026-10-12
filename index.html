@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mohammed Rangoonwala - Computer Science Student and Aspiring Full-Stack Developer. Portfolio showcasing web development projects, technical skills, and software engineering interests.">
+  <meta name="author" content="Mohammed Rangoonwala">
+  <title>Mohammed Rangoonwala | Developer Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Accessibility Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Navigation Header -->
+  <header class="site-header" id="top">
+    <div class="nav-wrapper">
+      <a href="#top" class="brand-logo" aria-label="Mohammed Rangoonwala - Back to top">MR</a>
+
+      <!-- Mobile Menu Toggle -->
+      <button 
+        type="button" 
+        class="nav-toggle" 
+        id="nav-toggle" 
+        aria-controls="primary-nav" 
+        aria-expanded="false" 
+        aria-label="Toggle navigation menu"
+      >
+        <span class="toggle-icon-bar"></span>
+        <span class="toggle-icon-bar"></span>
+        <span class="toggle-icon-bar"></span>
+      </button>
+
+      <!-- Primary Navigation -->
+      <nav aria-label="Primary navigation">
+        <ul id="primary-nav" class="nav-menu">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main id="main-content">
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero" aria-labelledby="hero-title">
+      <div class="container hero-container">
+        <div class="hero-text-content">
+          <p class="hero-role-badge">Computer Science Student | Aspiring Full-Stack Developer</p>
+          <h1 id="hero-title" class="hero-title">
+            <span class="hero-name">Mohammed Rangoonwala</span>
+            <span class="hero-headline">Building useful things for the web.</span>
+          </h1>
+          <p class="hero-lead">
+            I'm a computer science student interested in web development, software engineering, and creating clean, intuitive digital experiences. I enjoy turning ideas into practical projects and continuously improving my technical skills.
+          </p>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+        
+        <div class="hero-media">
+          <div class="profile-card">
+            <!-- 
+              Profile Photograph:
+              Referencing local 'profile.jpg'. If the file is changed or missing, 
+              the fallback styling gracefully preserves layout.
+            -->
+            <img 
+              src="profile.jpg" 
+              alt="Portrait of Mohammed Rangoonwala" 
+              class="profile-img" 
+              id="profile-image"
+              width="260" 
+              height="260"
+              loading="eager"
+            >
+            <div class="profile-fallback" id="profile-fallback" aria-hidden="true">
+              <span>MR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="section about-section" id="about" aria-labelledby="about-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="about-heading" class="section-heading">A little about me</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="about-content">
+          <div class="about-text-column">
+            <p>
+              I'm a Computer Science student with an interest in building software that is both functional and easy to use. My interests span frontend development, backend systems, problem-solving, and visual design.
+            </p>
+            <p>
+              I enjoy learning by building projects, experimenting with different technologies, and understanding how applications work beyond their user interface. Outside programming, I also have an interest in photography and video editing, which influence how I approach visual presentation and design.
+            </p>
+          </div>
+
+          <div class="about-meta-grid">
+            <div class="about-meta-item">
+              <span class="meta-label">Focus</span>
+              <span class="meta-value">Web Development</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="meta-label">Interests</span>
+              <span class="meta-value">Software Engineering &amp; Problem-Solving</span>
+            </div>
+            <div class="about-meta-item">
+              <span class="meta-label">Creative Pursuits</span>
+              <span class="meta-value">Photography &amp; Video Editing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technical Skills Section -->
+    <section class="section skills-section" id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="skills-heading" class="section-heading">Tools &amp; Technologies</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Languages -->
+          <div class="skill-category">
+            <h3 class="skill-category-title">Languages</h3>
+            <ul class="skill-list" aria-label="Programming languages">
+              <li class="skill-item">Java</li>
+              <li class="skill-item">C</li>
+              <li class="skill-item">JavaScript</li>
+              <li class="skill-item">Python</li>
+            </ul>
+          </div>
+
+          <!-- Frontend -->
+          <div class="skill-category">
+            <h3 class="skill-category-title">Frontend</h3>
+            <ul class="skill-list" aria-label="Frontend technologies">
+              <li class="skill-item">HTML5</li>
+              <li class="skill-item">CSS3</li>
+              <li class="skill-item">React</li>
+              <li class="skill-item">Responsive Web Design</li>
+            </ul>
+          </div>
+
+          <!-- Backend & Databases -->
+          <div class="skill-category">
+            <h3 class="skill-category-title">Backend &amp; Databases</h3>
+            <ul class="skill-list" aria-label="Backend technologies and databases">
+              <li class="skill-item">Node.js</li>
+              <li class="skill-item">Express.js</li>
+              <li class="skill-item">PostgreSQL</li>
+              <li class="skill-item">REST APIs</li>
+            </ul>
+          </div>
+
+          <!-- Tools & Creative Skills -->
+          <div class="skill-category">
+            <h3 class="skill-category-title">Tools &amp; Creative Skills</h3>
+            <ul class="skill-list" aria-label="Tools and creative capabilities">
+              <li class="skill-item">Git and GitHub</li>
+              <li class="skill-item">Figma</li>
+              <li class="skill-item">Photography</li>
+              <li class="skill-item">Video Editing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section projects-section" id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="projects-heading" class="section-heading">Selected Projects</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Project 1: ProManager -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-category">Web Application</span>
+              <h3 class="project-title">ProManager</h3>
+            </div>
+            <p class="project-description">
+              A project-management application designed to organise tasks, manage projects, and provide a clearer view of ongoing work.
+            </p>
+            <ul class="project-tech-list" aria-label="Technologies used for ProManager">
+              <li class="tech-tag">React</li>
+              <li class="tech-tag">Tailwind CSS</li>
+              <li class="tech-tag">Node.js</li>
+            </ul>
+            <!-- 
+              Project Links:
+              Replace '#' with your actual project repository and live demo URLs when available.
+            -->
+            <div class="project-actions">
+              <a href="#" class="project-link placeholder-link" aria-label="ProManager Repository (Replace with your GitHub repository URL)">
+                Repository <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+              <span class="link-separator" aria-hidden="true">&bull;</span>
+              <a href="#" class="project-link placeholder-link" aria-label="ProManager Live Demo (Replace with your live demo URL)">
+                Live Demo <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 2: Health Tracker -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-category">Mobile Application</span>
+              <h3 class="project-title">Health Tracker</h3>
+            </div>
+            <p class="project-description">
+              A mobile application concept for tracking daily activity and personal wellness, with features such as step counting, hydration reminders, and calorie tracking.
+            </p>
+            <ul class="project-tech-list" aria-label="Technologies used for Health Tracker">
+              <li class="tech-tag">React Native</li>
+              <li class="tech-tag">Expo</li>
+              <li class="tech-tag">JavaScript</li>
+            </ul>
+            <div class="project-actions">
+              <a href="#" class="project-link placeholder-link" aria-label="Health Tracker Repository (Replace with your GitHub repository URL)">
+                Repository <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+              <span class="link-separator" aria-hidden="true">&bull;</span>
+              <a href="#" class="project-link placeholder-link" aria-label="Health Tracker Concept Demo (Replace with your preview link)">
+                Concept Demo <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 3: Tic Tac Toe -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-category">Interactive Application</span>
+              <h3 class="project-title">Tic Tac Toe</h3>
+            </div>
+            <p class="project-description">
+              A simple interactive game built to practise frontend development, application logic, and dynamic user-interface updates.
+            </p>
+            <ul class="project-tech-list" aria-label="Technologies used for Tic Tac Toe">
+              <li class="tech-tag">React</li>
+              <li class="tech-tag">CSS</li>
+              <li class="tech-tag">JavaScript</li>
+            </ul>
+            <div class="project-actions">
+              <a href="#" class="project-link placeholder-link" aria-label="Tic Tac Toe Repository (Replace with your GitHub repository URL)">
+                Repository <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+              <span class="link-separator" aria-hidden="true">&bull;</span>
+              <a href="#" class="project-link placeholder-link" aria-label="Tic Tac Toe Live Game (Replace with your live demo URL)">
+                Live Demo <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+            </div>
+          </article>
+
+          <!-- Project 4: ChronoClick -->
+          <article class="project-card">
+            <div class="project-header">
+              <span class="project-category">Browser Game</span>
+              <h3 class="project-title">ChronoClick</h3>
+            </div>
+            <p class="project-description">
+              A timing-based game focused on user interaction, reaction timing, and implementing game logic in the browser.
+            </p>
+            <ul class="project-tech-list" aria-label="Technologies used for ChronoClick">
+              <li class="tech-tag">HTML</li>
+              <li class="tech-tag">CSS</li>
+              <li class="tech-tag">JavaScript</li>
+            </ul>
+            <div class="project-actions">
+              <a href="#" class="project-link placeholder-link" aria-label="ChronoClick Repository (Replace with your GitHub repository URL)">
+                Repository <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+              <span class="link-separator" aria-hidden="true">&bull;</span>
+              <a href="#" class="project-link placeholder-link" aria-label="ChronoClick Live Game (Replace with your live demo URL)">
+                Play Game <span class="arrow-icon" aria-hidden="true">&nearr;</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- What I'm Exploring Section -->
+    <section class="section exploring-section" id="exploring" aria-labelledby="exploring-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="exploring-heading" class="section-heading">What I'm Exploring</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="exploring-box">
+          <p class="exploring-intro">
+            Currently deepening my practical knowledge and exploring these core areas:
+          </p>
+          <ul class="exploring-list">
+            <li class="exploring-item">
+              <span class="exploring-bullet" aria-hidden="true">&bull;</span>
+              <span>Full-stack web development</span>
+            </li>
+            <li class="exploring-item">
+              <span class="exploring-bullet" aria-hidden="true">&bull;</span>
+              <span>Data structures and algorithms</span>
+            </li>
+            <li class="exploring-item">
+              <span class="exploring-bullet" aria-hidden="true">&bull;</span>
+              <span>Backend development and database design</span>
+            </li>
+            <li class="exploring-item">
+              <span class="exploring-bullet" aria-hidden="true">&bull;</span>
+              <span>Writing maintainable, efficient code</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <h2 id="contact-heading" class="section-heading">Let's connect</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <p class="contact-lead">
+          I'm open to connecting with fellow developers, collaborating on interesting projects, and learning from new opportunities.
+        </p>
+
+        <!-- 
+          ==========================================================
+          CONTACT CHANNELS
+          Update the href attributes below with your real details:
+          - Email: mailto:your.email@example.com
+          - GitHub: https://github.com/your-username
+          - LinkedIn: https://linkedin.com/in/your-username
+          ==========================================================
+        -->
+        <div class="contact-links-grid">
+          <!-- Email Contact -->
+          <a href="mailto:mohammed.rangoonwala@example.com" class="contact-card" id="contact-email">
+            <div class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">Email</span>
+              <span class="contact-value">mohammed.rangoonwala@example.com</span>
+            </div>
+            <span class="contact-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <!-- GitHub Contact -->
+          <a href="https://github.com/mohammedrangoonwala" target="_blank" rel="noopener noreferrer" class="contact-card" id="contact-github">
+            <div class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">GitHub</span>
+              <span class="contact-value">github.com/mohammedrangoonwala</span>
+            </div>
+            <span class="contact-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+
+          <!-- LinkedIn Contact -->
+          <a href="https://linkedin.com/in/mohammedrangoonwala" target="_blank" rel="noopener noreferrer" class="contact-card" id="contact-linkedin">
+            <div class="contact-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </div>
+            <div class="contact-info">
+              <span class="contact-label">LinkedIn</span>
+              <span class="contact-value">linkedin.com/in/mohammedrangoonwala</span>
+            </div>
+            <span class="contact-arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <p class="footer-copyright">
+        &copy; <span id="current-year">2026</span> Mohammed Rangoonwala
+      </p>
+      <p class="footer-note">Designed and built with HTML, CSS &amp; JavaScript.</p>
+    </div>
+  </footer>
+
+  <!-- Vanilla JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
