@@ -8,7 +8,16 @@
     content="Mohammed Rangoonwala - Computer Science Student &amp; Backend Engineer specializing in Distributed Systems, Spring Boot, Apache Kafka, Redis, PostgreSQL, Docker, AWS cloud services, and Agentic AI.">
   <meta name="author" content="Mohammed Rangoonwala">
   <title>Mohammed Rangoonwala | Distributed Systems &amp; Backend Portfolio</title>
+  
+  <!-- Google Fonts: Imposing Blocky Display (Syne), Tech Grotesk (Space Grotesk), Body Sans (Plus Jakarta Sans), and Monospace (JetBrains Mono) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&family=Syne:wght@700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Lenis Smooth Scrolling Library Styles -->
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css">
+  
+  <!-- Master Stylesheet -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -16,10 +25,19 @@
   <!-- Accessibility Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- Dynamic Scroll Progress Indicator -->
+  <div class="scroll-progress-container" aria-hidden="true">
+    <div class="scroll-progress-bar" id="scroll-progress-bar"></div>
+  </div>
+
   <!-- Navigation Header -->
   <header class="site-header" id="top">
     <div class="nav-wrapper">
-      <a href="#top" class="brand-logo" aria-label="Mohammed Rangoonwala - Back to top">MR</a>
+      <a href="#top" class="brand-logo" aria-label="Mohammed Rangoonwala - Back to top">
+        <span class="brand-bracket">[</span>
+        <span class="brand-initials">MR</span>
+        <span class="brand-bracket">]</span>
+      </a>
 
       <!-- Mobile Menu Toggle -->
       <button type="button" class="nav-toggle" id="nav-toggle" aria-controls="primary-nav" aria-expanded="false"
@@ -32,13 +50,13 @@
       <!-- Primary Navigation -->
       <nav aria-label="Primary navigation">
         <ul id="primary-nav" class="nav-menu">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#internship" class="nav-link">Internship</a></li>
-          <li><a href="#certificates" class="nav-link">Certificates</a></li>
-          <li><a href="#resume" class="nav-link">Resume</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#about" class="nav-link"><span class="nav-idx">01.</span>About</a></li>
+          <li><a href="#skills" class="nav-link"><span class="nav-idx">02.</span>Skills</a></li>
+          <li><a href="#projects" class="nav-link"><span class="nav-idx">03.</span>Projects</a></li>
+          <li><a href="#internship" class="nav-link"><span class="nav-idx">04.</span>Internship</a></li>
+          <li><a href="#certificates" class="nav-link"><span class="nav-idx">05.</span>Certificates</a></li>
+          <li><a href="#resume" class="nav-link"><span class="nav-idx">06.</span>Resume</a></li>
+          <li><a href="#contact" class="nav-link"><span class="nav-idx">07.</span>Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -48,18 +66,69 @@
   <main id="main-content">
     <!-- Hero Section -->
     <section class="hero-section" id="hero" aria-labelledby="hero-title">
+      <!-- Ambient Visual Layer with Floating Geometric Objects -->
+      <div class="ambient-visuals" aria-hidden="true">
+        <div class="ambient-glow glow-terracotta"></div>
+        <div class="ambient-glow glow-teal"></div>
+        <div class="ambient-glow glow-cobalt"></div>
+        
+        <!-- Floating Animated Wireframe Geometry -->
+        <div class="floating-geo geo-polyhedron" data-parallax="0.08">
+          <svg width="70" height="70" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <polygon points="50,8 92,30 92,76 50,96 8,76 8,30" stroke-width="1.5" stroke-dasharray="4 3"/>
+            <line x1="50" y1="8" x2="50" y2="96" stroke-width="1.5"/>
+            <line x1="50" y1="52" x2="92" y2="30" stroke-width="1.5"/>
+            <line x1="50" y1="52" x2="8" y2="30" stroke-width="1.5"/>
+          </svg>
+        </div>
+        
+        <div class="floating-geo geo-rings" data-parallax="-0.07">
+          <svg width="65" height="65" viewBox="0 0 100 100" fill="none" stroke="currentColor">
+            <circle cx="50" cy="50" r="42" stroke-width="1.5" stroke-dasharray="8 6"/>
+            <circle cx="50" cy="50" r="28" stroke-width="1" stroke-dasharray="3 4"/>
+            <rect x="36" y="36" width="28" height="28" stroke-width="1.5" transform="rotate(45 50 50)"/>
+          </svg>
+        </div>
+
+        <div class="floating-geo geo-grid-dots" data-parallax="0.12">
+          <svg width="90" height="90" viewBox="0 0 90 90" fill="currentColor">
+            <circle cx="15" cy="15" r="1.5"/><circle cx="45" cy="15" r="1.5"/><circle cx="75" cy="15" r="1.5"/>
+            <circle cx="15" cy="45" r="1.5"/><circle cx="45" cy="45" r="1.5"/><circle cx="75" cy="45" r="1.5"/>
+            <circle cx="15" cy="75" r="1.5"/><circle cx="45" cy="75" r="1.5"/><circle cx="75" cy="75" r="1.5"/>
+          </svg>
+        </div>
+      </div>
+
       <div class="container hero-container">
         <div class="hero-text-content">
-          <p class="hero-role-badge">Distributed Systems &amp; Backend Engineer | Agentic AI</p>
+          <!-- Imposing Meta Header & Status Pill -->
+          <div class="hero-status-row">
+            <div class="hero-status-pill">
+              <span class="status-pulse-dot" aria-hidden="true"></span>
+              <span class="status-text">SYSTEM STATUS // READY FOR PRODUCTION</span>
+            </div>
+            <span class="hero-spec-tag">[ SPEC_2026 // BE-ENG ]</span>
+          </div>
+
+          <!-- Imposing Blocky Hero Title -->
           <h1 id="hero-title" class="hero-title">
-            <span class="hero-name">Mohammed Rangoonwala</span>
-            <span class="hero-headline">Building resilient distributed systems and agentic AI.</span>
+            <span class="hero-name">MOHAMMED RANGOONWALA</span>
+            <span class="hero-headline">
+              <span class="headline-block">ENGINEERING RESILIENT</span>
+              <span class="headline-block headline-highlight">DISTRIBUTED SYSTEMS</span>
+              <span class="headline-block">&amp; AGENTIC AI.</span>
+            </span>
           </h1>
+
           <p class="hero-lead">
-            I'm a computer science student specializing in distributed systems, event-driven architectures, and agentic AI. Experienced with Spring Boot, Apache Kafka, Redis, PostgreSQL, Docker, and AWS cloud services to engineer scalable, high-availability software.
+            Computer science student specializing in event-driven microservices, high-throughput message streaming, fault-tolerant replication protocols, and cognitive AI agents. Architecting scalable, zero-downtime infrastructure with Spring Boot, Apache Kafka, Redis, PostgreSQL, Docker, and AWS.
           </p>
+
           <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">View My Projects</a>
+            <a href="#projects" class="btn btn-primary">
+              <span>Explore Projects</span>
+              <span class="btn-arrow" aria-hidden="true">&rarr;</span>
+            </a>
             <a href="#resume" class="btn btn-secondary">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 6px; vertical-align: text-bottom;">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -70,21 +139,71 @@
               </svg>
               View Resume
             </a>
-            <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+            <a href="#contact" class="btn btn-outline">Initiate Contact</a>
+          </div>
+
+          <!-- Imposing Blocky Hero Metrics -->
+          <div class="hero-metrics-grid">
+            <div class="metric-block metric-terracotta">
+              <span class="metric-value">5+</span>
+              <span class="metric-label">Engineered Platforms</span>
+            </div>
+            <div class="metric-block metric-teal">
+              <span class="metric-value">CAP</span>
+              <span class="metric-label">Fault-Tolerant CRDTs</span>
+            </div>
+            <div class="metric-block metric-cobalt">
+              <span class="metric-value">ACID</span>
+              <span class="metric-label">Kafka &bull; Redis &bull; Postgres</span>
+            </div>
+            <div class="metric-block metric-plum">
+              <span class="metric-value">LLM</span>
+              <span class="metric-label">Agentic AI Protocols</span>
+            </div>
           </div>
         </div>
 
+        <!-- Profile Showcase with Floating Hovering Objects -->
         <div class="hero-media">
-          <div class="profile-card">
-            <!-- 
-              Profile Photograph:
-              Referencing local 'profile.jpg'. If the file is changed or missing, 
-              the fallback styling gracefully preserves layout.
-            -->
-            <img src="profile.jpg" alt="Portrait of Mohammed Rangoonwala" class="profile-img" id="profile-image"
-              width="260" height="260" loading="eager">
-            <div class="profile-fallback" id="profile-fallback" aria-hidden="true">
-              <span>MR</span>
+          <div class="profile-showcase-wrapper">
+            <!-- Floating Animated Chips (Orbiting Objects) -->
+            <div class="floating-chip chip-terracotta float-chip-1" data-parallax="0.04" title="Event-Driven Message Streaming">
+              <span class="chip-dot"></span>
+              <span class="chip-text">Kafka // Event-Driven</span>
+            </div>
+
+            <div class="floating-chip chip-teal float-chip-2" data-parallax="-0.03" title="Distributed CRDT Consistency">
+              <span class="chip-glyph">◈</span>
+              <span class="chip-text">CAP // State Replication</span>
+            </div>
+
+            <div class="floating-chip chip-plum float-chip-3" data-parallax="0.05" title="Autonomous Agent Workflows">
+              <span class="chip-glyph">✦</span>
+              <span class="chip-text">Agentic AI // Gemini</span>
+            </div>
+
+            <div class="floating-chip chip-cobalt float-chip-4" data-parallax="-0.04" title="Enterprise Backend Infrastructure">
+              <span class="chip-glyph">⬡</span>
+              <span class="chip-text">Spring Boot &bull; Docker</span>
+            </div>
+
+            <!-- Profile Frame -->
+            <div class="profile-card">
+              <div class="profile-card-corners" aria-hidden="true">
+                <span class="corner tl"></span>
+                <span class="corner tr"></span>
+                <span class="corner bl"></span>
+                <span class="corner br"></span>
+              </div>
+              <img src="profile.jpg" alt="Portrait of Mohammed Rangoonwala" class="profile-img" id="profile-image"
+                width="260" height="260" loading="eager">
+              <div class="profile-fallback" id="profile-fallback" aria-hidden="true">
+                <span>MR</span>
+              </div>
+              <div class="profile-card-tag">
+                <span class="tag-accent"></span>
+                <span>SYSTEM_ENGINEER</span>
+              </div>
             </div>
           </div>
         </div>
@@ -94,33 +213,53 @@
     <!-- About Me Section -->
     <section class="section about-section" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="about-heading" class="section-heading">A little about me</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_01 // ARCHITECTURAL PHILOSOPHY ]</div>
+          <h2 id="about-heading" class="section-heading">ENGINEERING FOCUS</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
         <div class="about-content">
-          <div class="about-text-column">
+          <div class="about-text-column reveal-on-scroll delay-1">
             <p>
-              I'm a Computer Science student focused on architecting resilient distributed systems, event-driven pipelines, and autonomous agentic AI. My work spans high-throughput message streaming with Apache Kafka, enterprise microservices with Spring Boot, low-latency caching with Redis, and ACID-compliant data persistence with PostgreSQL.
+              I am a Computer Science student dedicated to mastering the complexities of <strong>distributed computing</strong>, <strong>high-throughput message streaming</strong>, and <strong>autonomous agentic AI</strong>. My engineering practices emphasize resilience over optimism: anticipating network partitions, minimizing latency variance, and designing deterministic data flows.
             </p>
             <p>
-              I enjoy solving fundamental software engineering challenges like eventual consistency, fault tolerance, and multi-agent coordination, deploying reliable containerized infrastructure using Docker and AWS cloud services.
+              My hands-on architecture spans event-driven pipelines powered by <strong>Apache Kafka</strong>, enterprise-grade microservices via <strong>Spring Boot</strong>, sub-millisecond in-memory caching with <strong>Redis</strong>, and relational durability using <strong>PostgreSQL</strong>. On the infrastructure frontier, containerization with <strong>Docker</strong> and <strong>AWS cloud services</strong> ensures predictable, reproducible rollouts.
             </p>
           </div>
 
-          <div class="about-meta-grid">
-            <div class="about-meta-item">
-              <span class="meta-label">Focus</span>
-              <span class="meta-value">Distributed Systems &amp; Backend</span>
+          <div class="about-meta-grid reveal-on-scroll delay-2">
+            <div class="about-meta-item item-terracotta">
+              <div class="meta-header">
+                <span class="meta-index">01</span>
+                <span class="meta-label">Primary Discipline</span>
+              </div>
+              <span class="meta-value">Distributed Systems &amp; Backend Engineering</span>
             </div>
-            <div class="about-meta-item">
-              <span class="meta-label">Core Stack</span>
-              <span class="meta-value">Spring Boot, Kafka, Redis, Postgres, Docker, AWS</span>
+            <div class="about-meta-item item-teal">
+              <div class="meta-header">
+                <span class="meta-index">02</span>
+                <span class="meta-label">Production Stack</span>
+              </div>
+              <span class="meta-value">Spring Boot, Kafka, Redis, PostgreSQL, Docker, AWS</span>
             </div>
-            <div class="about-meta-item">
-              <span class="meta-label">Interests</span>
-              <span class="meta-value">Agentic AI &amp; Event-Driven Architecture</span>
+            <div class="about-meta-item item-plum">
+              <div class="meta-header">
+                <span class="meta-index">03</span>
+                <span class="meta-label">Emerging Frontier</span>
+              </div>
+              <span class="meta-value">Agentic AI Protocols &amp; Multi-Agent Coordination</span>
+            </div>
+            <div class="about-meta-item item-cobalt">
+              <div class="meta-header">
+                <span class="meta-index">04</span>
+                <span class="meta-label">Core Paradigm</span>
+              </div>
+              <span class="meta-value">Fault Tolerance, CAP Theorem &amp; Event-Driven Architecture</span>
             </div>
           </div>
         </div>
@@ -130,15 +269,22 @@
     <!-- Technical Skills Section -->
     <section class="section skills-section" id="skills" aria-labelledby="skills-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="skills-heading" class="section-heading">Tools &amp; Technologies</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_02 // ARSENAL ]</div>
+          <h2 id="skills-heading" class="section-heading">CORE COMPETENCIES</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
         <div class="skills-grid">
-          <!-- Languages -->
-          <div class="skill-category">
-            <h3 class="skill-category-title">Languages</h3>
+          <!-- Languages (Cobalt Theme) -->
+          <div class="skill-category skill-cat-cobalt reveal-on-scroll delay-1">
+            <div class="skill-category-header">
+              <span class="cat-badge">[ 01 ]</span>
+              <h3 class="skill-category-title">Languages &amp; Core Systems</h3>
+            </div>
             <ul class="skill-list" aria-label="Programming languages">
               <li class="skill-item">Java (21)</li>
               <li class="skill-item">Python</li>
@@ -148,9 +294,12 @@
             </ul>
           </div>
 
-          <!-- Backend & Frameworks -->
-          <div class="skill-category">
-            <h3 class="skill-category-title">Backend &amp; Frameworks</h3>
+          <!-- Backend & Frameworks (Teal Theme) -->
+          <div class="skill-category skill-cat-teal reveal-on-scroll delay-2">
+            <div class="skill-category-header">
+              <span class="cat-badge">[ 02 ]</span>
+              <h3 class="skill-category-title">Backend &amp; Microservices</h3>
+            </div>
             <ul class="skill-list" aria-label="Backend technologies and frameworks">
               <li class="skill-item">Spring Boot</li>
               <li class="skill-item">Spring Framework</li>
@@ -160,9 +309,12 @@
             </ul>
           </div>
 
-          <!-- Distributed Systems & Databases -->
-          <div class="skill-category">
-            <h3 class="skill-category-title">Distributed Systems &amp; Databases</h3>
+          <!-- Distributed Systems & Databases (Terracotta Theme) -->
+          <div class="skill-category skill-cat-terracotta reveal-on-scroll delay-3">
+            <div class="skill-category-header">
+              <span class="cat-badge">[ 03 ]</span>
+              <h3 class="skill-category-title">Distributed Systems &amp; Data</h3>
+            </div>
             <ul class="skill-list" aria-label="Distributed systems and databases">
               <li class="skill-item">Apache Kafka</li>
               <li class="skill-item">PostgreSQL</li>
@@ -172,13 +324,16 @@
             </ul>
           </div>
 
-          <!-- Cloud & DevOps -->
-          <div class="skill-category">
-            <h3 class="skill-category-title">Cloud &amp; DevOps</h3>
+          <!-- Cloud & DevOps (Sage Theme) -->
+          <div class="skill-category skill-cat-sage reveal-on-scroll delay-4">
+            <div class="skill-category-header">
+              <span class="cat-badge">[ 04 ]</span>
+              <h3 class="skill-category-title">Cloud, Containers &amp; DevOps</h3>
+            </div>
             <ul class="skill-list" aria-label="Cloud and DevOps tools">
               <li class="skill-item">Docker</li>
               <li class="skill-item">AWS Cloud Services</li>
-              <li class="skill-item">Git and GitHub</li>
+              <li class="skill-item">Git &amp; GitHub</li>
               <li class="skill-item">CI/CD Pipelines</li>
               <li class="skill-item">Linux</li>
             </ul>
@@ -190,18 +345,24 @@
     <!-- Projects Section -->
     <section class="section projects-section" id="projects" aria-labelledby="projects-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="projects-heading" class="section-heading">Selected Projects</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_03 // SYSTEMS CATALOG ]</div>
+          <h2 id="projects-heading" class="section-heading">SELECTED PROJECTS</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
         <div class="projects-grid">
-          <!-- Project 1: ForgeSight (Featured Flagship) -->
-          <article class="project-card project-card-featured">
+          <!-- Project 1: ForgeSight (Featured Flagship - Terracotta Theme) -->
+          <article class="project-card project-card-featured theme-terracotta reveal-on-scroll delay-1">
+            <div class="project-card-shimmer" aria-hidden="true"></div>
             <div class="project-header">
               <div class="project-category-row">
-                <span class="project-category">Developer Intelligence &bull; Observability Platform &bull; Full-Stack</span>
-                <span class="featured-badge">Flagship</span>
+                <span class="project-idx">[ SYS_01 // FLAGSHIP ]</span>
+                <span class="project-category">Developer Intelligence &bull; Observability Platform</span>
+                <span class="featured-badge">Production Architecture</span>
               </div>
               <h3 class="project-title">ForgeSight &mdash; Enterprise Engineering Productivity &amp; Delivery Telemetry Platform</h3>
             </div>
@@ -230,10 +391,12 @@
             </div>
           </article>
 
-          <!-- Project 2: Eventual Consistency -->
-          <article class="project-card">
+          <!-- Project 2: Eventual Consistency (Teal Theme) -->
+          <article class="project-card theme-teal reveal-on-scroll delay-2">
+            <div class="project-card-shimmer" aria-hidden="true"></div>
             <div class="project-header">
               <div class="project-category-row">
+                <span class="project-idx">[ SYS_02 ]</span>
                 <span class="project-category">Distributed Systems &bull; Fault Tolerance</span>
               </div>
               <h3 class="project-title">SynchroMesh &mdash; Distributed Eventual Consistency &amp; State Replication Protocol</h3>
@@ -261,10 +424,12 @@
             </div>
           </article>
 
-          <!-- Project 3: Project Management App -->
-          <article class="project-card">
+          <!-- Project 3: Project Management App (Cobalt Theme) -->
+          <article class="project-card theme-cobalt reveal-on-scroll delay-3">
+            <div class="project-card-shimmer" aria-hidden="true"></div>
             <div class="project-header">
               <div class="project-category-row">
+                <span class="project-idx">[ SYS_03 ]</span>
                 <span class="project-category">Enterprise Platforms &bull; Workflow Orchestration</span>
               </div>
               <h3 class="project-title">ChronosMatrix &mdash; Collaborative Workflow &amp; Enterprise Resource Orchestrator</h3>
@@ -292,10 +457,12 @@
             </div>
           </article>
 
-          <!-- Project 4: flexiCA3 (Agentic AI) -->
-          <article class="project-card">
+          <!-- Project 4: flexiCA3 (Agentic AI - Plum Theme) -->
+          <article class="project-card theme-plum reveal-on-scroll delay-1">
+            <div class="project-card-shimmer" aria-hidden="true"></div>
             <div class="project-header">
               <div class="project-category-row">
+                <span class="project-idx">[ SYS_04 ]</span>
                 <span class="project-category">Agentic AI &bull; Cognitive Semantic Classification</span>
               </div>
               <h3 class="project-title">AegisAgent &mdash; Autonomous Multi-Vector Alert Triage &amp; Semantic Classification Pipeline</h3>
@@ -323,10 +490,12 @@
             </div>
           </article>
 
-          <!-- Project 5: Ping-Pong (Systems Programming & Simulation) -->
-          <article class="project-card">
+          <!-- Project 5: Ping-Pong (Systems Programming - Amber Theme) -->
+          <article class="project-card theme-amber reveal-on-scroll delay-2">
+            <div class="project-card-shimmer" aria-hidden="true"></div>
             <div class="project-header">
               <div class="project-category-row">
+                <span class="project-idx">[ SYS_05 ]</span>
                 <span class="project-category">Systems Programming &bull; Deterministic Physics &amp; Graphics</span>
               </div>
               <h3 class="project-title">KineticEngine &mdash; Real-Time Deterministic 2D Physics &amp; Interactive Graphics Simulation</h3>
@@ -360,14 +529,20 @@
     <!-- Internship Section -->
     <section class="section internship-section" id="internship" aria-labelledby="internship-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="internship-heading" class="section-heading">Internship Experience</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_04 // INDUSTRY RECORD ]</div>
+          <h2 id="internship-heading" class="section-heading">PRODUCTION EXPERIENCE</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
-        <div class="internship-card">
+        <div class="internship-card reveal-on-scroll delay-1">
+          <div class="internship-card-shimmer" aria-hidden="true"></div>
           <div class="internship-header">
             <div class="internship-meta">
+              <span class="internship-idx">[ EXP_01 ]</span>
               <span class="internship-badge">Verified Completion</span>
               <span class="internship-timeline">Summer Internship</span>
             </div>
@@ -437,14 +612,18 @@
     <!-- Certifications Section -->
     <section class="section certificates-section" id="certificates" aria-labelledby="certificates-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="certificates-heading" class="section-heading">Certifications</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_05 // CREDENTIALS ]</div>
+          <h2 id="certificates-heading" class="section-heading">VERIFIED CERTIFICATIONS</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
         <div class="certificates-grid">
-          <!-- Cert 1: Red Hat -->
-          <article class="cert-card">
+          <!-- Cert 1: Red Hat (Crimson Theme) -->
+          <article class="cert-card cert-redhat-card reveal-on-scroll delay-1">
             <div class="cert-media">
               <img src="certificates/red-hat-system-administration-i-rh124-rha-ver-10.png"
                 alt="Red Hat System Administration I (RH124) Certificate Badge" class="cert-img" loading="lazy">
@@ -456,6 +635,7 @@
             </div>
             <div class="cert-content">
               <div class="cert-meta">
+                <span class="cert-idx">[ CERT_01 ]</span>
                 <span class="cert-issuer-badge cert-redhat">Red Hat Academy</span>
                 <span class="cert-type">Course Attendance</span>
               </div>
@@ -477,8 +657,8 @@
             </div>
           </article>
 
-          <!-- Cert 2: Mastering Agentic AI -->
-          <article class="cert-card">
+          <!-- Cert 2: Mastering Agentic AI (Plum Theme) -->
+          <article class="cert-card cert-udemy-card reveal-on-scroll delay-2">
             <div class="cert-media">
               <img src="certificates/UC-ab28c300-69bc-426f-a8c2-598c39b5d039.jpg"
                 alt="Mastering Agentic AI: From Prompt to Protocols to Production Certificate" class="cert-img"
@@ -491,6 +671,7 @@
             </div>
             <div class="cert-content">
               <div class="cert-meta">
+                <span class="cert-idx">[ CERT_02 ]</span>
                 <span class="cert-issuer-badge cert-udemy">Udemy Verified</span>
                 <span class="cert-type">38 Hours &bull; Aug 2026</span>
               </div>
@@ -521,15 +702,20 @@
     <!-- Resume Section -->
     <section class="section resume-section" id="resume" aria-labelledby="resume-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="resume-heading" class="section-heading">Resume</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_06 // DOSSIER ]</div>
+          <h2 id="resume-heading" class="section-heading">TECHNICAL RESUME</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
-        <div class="resume-container">
+        <div class="resume-container reveal-on-scroll delay-1">
           <div class="resume-card">
             <div class="resume-header">
               <div class="resume-profile-summary">
+                <span class="resume-badge">[ CURRICULUM_VITAE ]</span>
                 <h3 class="resume-name">Mohammed Rangoonwala</h3>
                 <p class="resume-subtitle">Backend Developer &amp; Computer Science Student</p>
                 <p class="resume-location">Nagpur, Maharashtra &bull; Symbiosis Institute of Technology (Expected 2028)</p>
@@ -560,7 +746,7 @@
 
             <div class="resume-highlights-grid">
               <div class="resume-highlight-block">
-                <h4 class="resume-block-title">Education</h4>
+                <h4 class="resume-block-title">[ EDUCATION ]</h4>
                 <div class="resume-item">
                   <div class="resume-item-title">Symbiosis Institute of Technology, Nagpur</div>
                   <div class="resume-item-desc">B.Tech in Computer Science &bull; Current CGPA: 7.0 (Expected Graduation: 2028)</div>
@@ -572,7 +758,7 @@
               </div>
 
               <div class="resume-highlight-block">
-                <h4 class="resume-block-title">Technical Competencies</h4>
+                <h4 class="resume-block-title">[ COMPETENCY_MATRIX ]</h4>
                 <div class="resume-skills-block">
                   <p class="resume-skills-line">
                     <span class="skill-label">Languages:</span> Node.js, Java, Python, Rust, SQL, C/C++
@@ -595,7 +781,7 @@
                   <span class="dot dot-yellow"></span>
                   <span class="dot dot-green"></span>
                 </div>
-                <span class="embed-filename">Backend_developer_resume.pdf</span>
+                <span class="embed-filename">Backend_developer_resume.pdf [ READ_ONLY ]</span>
                 <a href="resume/Backend_developer_resume.pdf" target="_blank" rel="noopener noreferrer"
                   class="embed-external-link" aria-label="Open PDF in new tab">
                   Open in New Tab &nearr;
@@ -614,31 +800,36 @@
     <!-- What I'm Exploring Section -->
     <section class="section exploring-section" id="exploring" aria-labelledby="exploring-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="exploring-heading" class="section-heading">What I'm Exploring</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_07 // ACTIVE FRONTIERS ]</div>
+          <h2 id="exploring-heading" class="section-heading">RESEARCH &amp; DEEP DIVES</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
-        <div class="exploring-box">
+        <div class="exploring-box reveal-on-scroll delay-1">
+          <div class="exploring-badge">[ R&amp;D_DIRECTIVE ]</div>
           <p class="exploring-intro">
-            Currently deepening my practical knowledge and exploring these core areas:
+            Actively investigating production patterns and architectural trade-offs across these key domains:
           </p>
           <ul class="exploring-list">
             <li class="exploring-item">
               <span class="exploring-bullet" aria-hidden="true">&bull;</span>
-              <span>Distributed consensus protocols and transaction coordination (Sagas, Outbox)</span>
+              <span>Distributed consensus protocols and transaction coordination (Sagas, Transactional Outbox pattern)</span>
             </li>
             <li class="exploring-item">
               <span class="exploring-bullet" aria-hidden="true">&bull;</span>
-              <span>High-throughput event streaming and CDC pipelines with Apache Kafka</span>
+              <span>High-throughput event streaming and Change Data Capture (CDC) pipelines with Apache Kafka</span>
             </li>
             <li class="exploring-item">
               <span class="exploring-bullet" aria-hidden="true">&bull;</span>
-              <span>Autonomous agentic AI architectures and multi-agent orchestration</span>
+              <span>Autonomous agentic AI architectures and multi-agent orchestration state machines</span>
             </li>
             <li class="exploring-item">
               <span class="exploring-bullet" aria-hidden="true">&bull;</span>
-              <span>Cloud-native resilience and containerized deployments with Docker and AWS</span>
+              <span>Cloud-native resilience, containerized deployments, and immutable infrastructure with Docker and AWS</span>
             </li>
           </ul>
         </div>
@@ -648,28 +839,22 @@
     <!-- Contact Section -->
     <section class="section contact-section" id="contact" aria-labelledby="contact-heading">
       <div class="container">
-        <div class="section-header">
-          <h2 id="contact-heading" class="section-heading">Let's connect</h2>
-          <div class="section-divider"></div>
+        <div class="section-header reveal-on-scroll">
+          <div class="section-meta-tag">[ SEC_08 // TRANSMISSION ]</div>
+          <h2 id="contact-heading" class="section-heading">INITIATE CONNECTION</h2>
+          <div class="section-divider">
+            <span class="divider-bar"></span>
+            <span class="divider-block"></span>
+          </div>
         </div>
 
-        <p class="contact-lead">
-          I'm open to connecting with fellow developers, collaborating on interesting projects, and learning from new
-          opportunities.
+        <p class="contact-lead reveal-on-scroll delay-1">
+          Open to technical dialogues, distributed systems discussions, backend engineering opportunities, and collaborative initiatives.
         </p>
 
-        <!-- 
-          ==========================================================
-          CONTACT CHANNELS
-          Update the href attributes below with your real details:
-          - Email: mailto:your.email@example.com
-          - GitHub: https://github.com/your-username
-          - LinkedIn: https://linkedin.com/in/your-username
-          ==========================================================
-        -->
-        <div class="contact-links-grid">
+        <div class="contact-links-grid reveal-on-scroll delay-2">
           <!-- Email Contact -->
-          <a href="mailto:mohammed.rangoonwala.batch2024@sitnagpur.siu.edu.in" class="contact-card" id="contact-email">
+          <a href="mailto:mohammed.rangoonwala.batch2024@sitnagpur.siu.edu.in" class="contact-card contact-card-email" id="contact-email">
             <div class="contact-icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -678,14 +863,14 @@
               </svg>
             </div>
             <div class="contact-info">
-              <span class="contact-label">Email</span>
+              <span class="contact-label">[ DIRECT_MAIL ]</span>
               <span class="contact-value">mohammed.rangoonwala.batch2024@sitnagpur.siu.edu.in</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">&rarr;</span>
           </a>
 
           <!-- GitHub Contact -->
-          <a href="https://github.com/Batmn53" target="_blank" rel="noopener noreferrer" class="contact-card"
+          <a href="https://github.com/Batmn53" target="_blank" rel="noopener noreferrer" class="contact-card contact-card-github"
             id="contact-github">
             <div class="contact-icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -697,7 +882,7 @@
               </svg>
             </div>
             <div class="contact-info">
-              <span class="contact-label">GitHub</span>
+              <span class="contact-label">[ GITHUB_PROFILE ]</span>
               <span class="contact-value">github.com/Batmn53</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">&rarr;</span>
@@ -705,7 +890,7 @@
 
           <!-- LinkedIn Contact -->
           <a href="https://linkedin.com/in/mohammedrangoonwala" target="_blank" rel="noopener noreferrer"
-            class="contact-card" id="contact-linkedin">
+            class="contact-card contact-card-linkedin" id="contact-linkedin">
             <div class="contact-icon" aria-hidden="true">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -715,7 +900,7 @@
               </svg>
             </div>
             <div class="contact-info">
-              <span class="contact-label">LinkedIn</span>
+              <span class="contact-label">[ PROFESSIONAL_NETWORK ]</span>
               <span class="contact-value">linkedin.com/in/mohammedrangoonwala</span>
             </div>
             <span class="contact-arrow" aria-hidden="true">&rarr;</span>
@@ -728,10 +913,16 @@
   <!-- Footer -->
   <footer class="site-footer">
     <div class="container footer-container">
+      <div class="footer-block-brand">
+        <span class="brand-bracket">[</span>
+        <span class="brand-initials">MR</span>
+        <span class="brand-bracket">]</span>
+        <span class="footer-brand-title">MOHAMMED RANGOONWALA // BACKEND &amp; DISTRIBUTED SYSTEMS</span>
+      </div>
       <p class="footer-copyright">
-        &copy; <span id="current-year">2026</span> Mohammed Rangoonwala
+        &copy; <span id="current-year">2026</span> Mohammed Rangoonwala. Engineered for high performance and architectural elegance.
       </p>
-      <p class="footer-note">Designed and built with HTML, CSS &amp; JavaScript.</p>
+      <p class="footer-note">Handcrafted with semantic HTML5, Modern Vanilla CSS3 &amp; ECMAScript.</p>
     </div>
   </footer>
 
@@ -740,7 +931,10 @@
     <div class="modal-backdrop" id="modal-backdrop"></div>
     <div class="modal-dialog" data-lenis-prevent>
       <div class="modal-header">
-        <h3 id="modal-cert-title" class="modal-title">Certificate Preview</h3>
+        <div class="modal-title-wrap">
+          <span class="modal-tag">[ CERT_INSPECTION ]</span>
+          <h3 id="modal-cert-title" class="modal-title">Certificate Preview</h3>
+        </div>
         <button type="button" class="modal-close" id="modal-close" aria-label="Close certificate preview">&times;</button>
       </div>
       <div class="modal-body" data-lenis-prevent>

@@ -1,16 +1,21 @@
 /**
- * Mohammed Rangoonwala - Developer Portfolio
+ * Mohammed Rangoonwala - Distributed Systems & Backend Portfolio
  * Vanilla JavaScript interactions:
- * - Accessible mobile navigation toggle
- * - Smooth anchor scrolling with header offset and reduced-motion support
- * - Auto-close mobile menu on link click or outside click
- * - Dynamic copyright year in footer
+ * - Dynamic scroll progress indicator
+ * - Dynamic scroll reveal animations via IntersectionObserver
+ * - Interactive 3D card tilt & hover dynamics
+ * - Lenis smooth momentum scrolling with parallax response
+ * - Accessible mobile navigation toggle with blocky styling
  * - Active navigation link highlighting via IntersectionObserver
- * - Profile image graceful error handling
+ * - Lightbox modal for verified certifications
+ * - Direct PDF download handling for resumes and certificates
+ * - Dynamic footer copyright year
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   // -------------------------------------------------------------------------
   // 0. Lenis Smooth Momentum Scrolling Integration
@@ -18,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let lenisInstance = null;
 
   const initLenis = () => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (prefersReducedMotion) {
       return null;
     }
@@ -26,12 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (typeof Lenis !== 'undefined') {
       try {
         lenisInstance = new Lenis({
-          duration: 1.35, // Heavier, more substantial deceleration
-          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -7.5 * t)), // Weighted drag curve
+          duration: 1.25,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -7.5 * t)),
           orientation: 'vertical',
           gestureOrientation: 'vertical',
           smoothWheel: true,
-          wheelMultiplier: 0.78, // Solid, weighted wheel response
+          wheelMultiplier: 0.85,
           touchMultiplier: 1.2,
           infinite: false,
         });
@@ -52,7 +56,149 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 1. Dynamic Footer Year
+  // 1. Dynamic Scroll Progress Bar & Header State
+  // -------------------------------------------------------------------------
+  const initScrollProgress = () => {
+    const progressBar = document.getElementById('scroll-progress-bar');
+    const header = document.querySelector('.site-header');
+
+    const updateScrollMetrics = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+      if (progressBar) {
+        progressBar.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+      }
+
+      if (header) {
+        if (scrollTop > 40) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      }
+    };
+
+    window.addEventListener('scroll', updateScrollMetrics, { passive: true });
+
+    if (lenisInstance) {
+      lenisInstance.on('scroll', updateScrollMetrics);
+    }
+
+    updateScrollMetrics();
+  };
+
+  // -------------------------------------------------------------------------
+  // 2. Dynamic Scroll Reveal Animations (IntersectionObserver)
+  // -------------------------------------------------------------------------
+  const initScrollReveals = () => {
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+
+    if (prefersReducedMotion || !('IntersectionObserver' in window)) {
+      revealElements.forEach((el) => el.classList.add('is-visible'));
+      return;
+    }
+
+    const revealObserver = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.1,
+      }
+    );
+
+    revealElements.forEach((el) => revealObserver.observe(el));
+  };
+
+  // -------------------------------------------------------------------------
+  // 3. Interactive 3D Card Hover & Tilt Physics
+  // -------------------------------------------------------------------------
+  const initCard3DTilt = () => {
+    if (prefersReducedMotion || window.innerWidth < 768) {
+      return;
+    }
+
+    const interactiveCards = document.querySelectorAll('.project-card, .cert-card, .internship-card');
+
+    interactiveCards.forEach((card) => {
+      let bounds = null;
+
+      const handleMouseEnter = () => {
+        bounds = card.getBoundingClientRect();
+      };
+
+      const handleMouseMove = (e) => {
+        if (!bounds) bounds = card.getBoundingClientRect();
+
+        const mouseX = e.clientX - bounds.left;
+        const mouseY = e.clientY - bounds.top;
+
+        const xPct = (mouseX / bounds.width - 0.5) * 2; // -1 to +1
+        const yPct = (mouseY / bounds.height - 0.5) * 2; // -1 to +1
+
+        const maxTilt = 5; // degrees of tilt
+        const rotateX = -yPct * maxTilt;
+        const rotateY = xPct * maxTilt;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-4px)`;
+      };
+
+      const handleMouseLeave = () => {
+        card.style.transform = '';
+        bounds = null;
+      };
+
+      card.addEventListener('mouseenter', handleMouseEnter);
+      card.addEventListener('mousemove', handleMouseMove, { passive: true });
+      card.addEventListener('mouseleave', handleMouseLeave);
+    });
+  };
+
+  // -------------------------------------------------------------------------
+  // 4. Parallax Response on Floating Ambient Geometries
+  // -------------------------------------------------------------------------
+  const initParallaxElements = () => {
+    if (prefersReducedMotion || window.innerWidth < 768) {
+      return;
+    }
+
+    const parallaxNodes = document.querySelectorAll('[data-parallax]');
+    if (parallaxNodes.length === 0) return;
+
+    let ticking = false;
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const scrollY = window.scrollY || 0;
+          parallaxNodes.forEach((node) => {
+            const factor = parseFloat(node.getAttribute('data-parallax')) || 0.05;
+            const translateY = scrollY * factor;
+            node.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0)`;
+          });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    if (lenisInstance) {
+      lenisInstance.on('scroll', onScroll);
+    }
+  };
+
+  // -------------------------------------------------------------------------
+  // 5. Dynamic Footer Year
   // -------------------------------------------------------------------------
   const initFooterYear = () => {
     const yearElement = document.getElementById('current-year');
@@ -62,7 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 2. Mobile Navigation Toggle & Accessibility
+  // 6. Mobile Navigation Toggle & Accessibility
   // -------------------------------------------------------------------------
   const initMobileNav = () => {
     const navToggle = document.getElementById('nav-toggle');
@@ -71,8 +217,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!navToggle || !navMenu) return;
 
     const toggleMenu = (open) => {
-      const shouldOpen = typeof open === 'boolean' 
-        ? open 
+      const shouldOpen = typeof open === 'boolean'
+        ? open
         : navToggle.getAttribute('aria-expanded') !== 'true';
 
       navToggle.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
@@ -105,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close menu with Escape key for keyboard accessibility
+    // Close menu with Escape key
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
         toggleMenu(false);
@@ -115,11 +261,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 3. Smooth Scrolling with Lenis & Header Offset Fallback
+  // 7. Smooth Scrolling with Lenis & Header Offset Fallback
   // -------------------------------------------------------------------------
   const initSmoothScroll = () => {
     const internalLinks = document.querySelectorAll('a[href^="#"]');
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
     internalLinks.forEach((link) => {
       link.addEventListener('click', (event) => {
@@ -131,7 +276,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         event.preventDefault();
 
-        // Calculate target scroll position
         const header = document.querySelector('.site-header');
         const headerHeight = header ? header.offsetHeight : 0;
         let targetPosition = 0;
@@ -145,39 +289,33 @@ document.addEventListener('DOMContentLoaded', () => {
           );
         }
 
-        // If Lenis is available, use its momentum-driven smooth scroll
-        if (lenisInstance && !prefersReducedMotion.matches) {
+        if (lenisInstance && !prefersReducedMotion) {
           if (targetId === '#top' || targetElement === header) {
-            lenisInstance.scrollTo(0, { duration: 1.35 });
+            lenisInstance.scrollTo(0, { duration: 1.25 });
           } else {
             lenisInstance.scrollTo(targetElement, {
               offset: -headerHeight,
-              duration: 1.35,
+              duration: 1.25,
             });
           }
         } else {
-          // Native smooth scroll fallback
-          const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
           window.scrollTo({
             top: targetPosition,
-            behavior: behavior
+            behavior: prefersReducedMotion ? 'auto' : 'smooth',
           });
         }
 
-        // Set focus to the target element for screen readers and keyboard users
         if (!targetElement.hasAttribute('tabindex')) {
           targetElement.setAttribute('tabindex', '-1');
         }
         targetElement.focus({ preventScroll: true });
 
-        // Update active nav highlights if scrolled to the top
         if (targetPosition === 0) {
           document.querySelectorAll('.nav-link').forEach((navLink) => {
             navLink.classList.remove('active');
           });
         }
 
-        // Update URL hash without abrupt jumping
         if (history.pushState) {
           history.pushState(null, '', targetId);
         } else {
@@ -188,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 4. Active Navigation Link Highlighting via IntersectionObserver
+  // 8. Active Navigation Link Highlighting via IntersectionObserver
   // -------------------------------------------------------------------------
   const initActiveNavHighlight = () => {
     const navLinks = document.querySelectorAll('.nav-link');
@@ -199,7 +337,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const observerOptions = {
       root: null,
       rootMargin: '-20% 0px -60% 0px',
-      threshold: 0
+      threshold: 0,
     };
 
     const observerCallback = (entries) => {
@@ -223,38 +361,23 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 5. Profile Picture Graceful Fallback
+  // 9. Profile Picture Graceful Fallback
   // -------------------------------------------------------------------------
   const initProfileImageFallback = () => {
     const profileImg = document.getElementById('profile-image');
     if (!profileImg) return;
 
-    // Check if the image fails to load
     profileImg.addEventListener('error', () => {
       profileImg.classList.add('error');
     });
 
-    // Handle cached broken image edge case
     if (profileImg.complete && profileImg.naturalWidth === 0) {
       profileImg.classList.add('error');
     }
   };
 
   // -------------------------------------------------------------------------
-  // 6. Project Placeholder Links Handling
-  // -------------------------------------------------------------------------
-  const initPlaceholderLinks = () => {
-    // Prevent unconfigured '#' links from jumping to page top
-    const placeholderLinks = document.querySelectorAll('a.placeholder-link[href="#"]');
-    placeholderLinks.forEach((link) => {
-      link.addEventListener('click', (event) => {
-        event.preventDefault();
-      });
-    });
-  };
-
-  // -------------------------------------------------------------------------
-  // 7. Certificate Lightbox Modal
+  // 10. Certificate Lightbox Modal
   // -------------------------------------------------------------------------
   const initCertificateModal = () => {
     const modal = document.getElementById('cert-modal');
@@ -301,7 +424,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
 
-    // Attach click listeners to all certificate preview buttons/overlays
     const triggers = document.querySelectorAll('[data-cert-src]');
     triggers.forEach((trigger) => {
       trigger.addEventListener('click', (event) => {
@@ -330,11 +452,10 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 8. Automatic File Download Handler (Forces download instead of PDF viewer)
+  // 11. Automatic File Download Handler (Forces download directly)
   // -------------------------------------------------------------------------
   const initAutoDownloads = () => {
     const triggerBlobDownload = (blob, filename) => {
-      // Force application/octet-stream MIME type to prevent browser internal PDF viewer interception
       const octetBlob = new Blob([blob], { type: 'application/octet-stream' });
       const blobUrl = window.URL.createObjectURL(octetBlob);
       const downloadLink = document.createElement('a');
@@ -356,7 +477,6 @@ document.addEventListener('DOMContentLoaded', () => {
         button.style.opacity = '0.7';
       }
 
-      // XMLHttpRequest with responseType = 'blob' works reliably across both file:// and http(s)://
       const xhr = new XMLHttpRequest();
       xhr.open('GET', url, true);
       xhr.responseType = 'blob';
@@ -395,7 +515,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => link.remove(), 500);
     };
 
-    // Attach to all elements with download attribute or .js-download-btn
     const downloadElements = document.querySelectorAll('a[download], .js-download-btn');
     downloadElements.forEach((el) => {
       el.addEventListener('click', (event) => {
@@ -409,14 +528,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // -------------------------------------------------------------------------
   // Initialize all interactive modules
+  // -------------------------------------------------------------------------
   initLenis();
+  initScrollProgress();
+  initScrollReveals();
+  initCard3DTilt();
+  initParallaxElements();
   initFooterYear();
   initMobileNav();
   initSmoothScroll();
   initActiveNavHighlight();
   initProfileImageFallback();
-  initPlaceholderLinks();
   initCertificateModal();
   initAutoDownloads();
 });
