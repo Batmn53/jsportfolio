@@ -13,6 +13,45 @@ document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   // -------------------------------------------------------------------------
+  // 0. Lenis Smooth Momentum Scrolling Integration
+  // -------------------------------------------------------------------------
+  let lenisInstance = null;
+
+  const initLenis = () => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) {
+      return null;
+    }
+
+    if (typeof Lenis !== 'undefined') {
+      try {
+        lenisInstance = new Lenis({
+          duration: 1.35, // Heavier, more substantial deceleration
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -7.5 * t)), // Weighted drag curve
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          wheelMultiplier: 0.78, // Solid, weighted wheel response
+          touchMultiplier: 1.2,
+          infinite: false,
+        });
+
+        const raf = (time) => {
+          lenisInstance.raf(time);
+          requestAnimationFrame(raf);
+        };
+        requestAnimationFrame(raf);
+
+        window.lenis = lenisInstance;
+        return lenisInstance;
+      } catch (err) {
+        console.warn('Lenis could not be initialized:', err);
+      }
+    }
+    return null;
+  };
+
+  // -------------------------------------------------------------------------
   // 1. Dynamic Footer Year
   // -------------------------------------------------------------------------
   const initFooterYear = () => {
@@ -76,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // -------------------------------------------------------------------------
-  // 3. Smooth Scrolling with Header Offset & Reduced Motion Check
+  // 3. Smooth Scrolling with Lenis & Header Offset Fallback
   // -------------------------------------------------------------------------
   const initSmoothScroll = () => {
     const internalLinks = document.querySelectorAll('a[href^="#"]');
@@ -94,25 +133,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Calculate target scroll position
         const header = document.querySelector('.site-header');
+        const headerHeight = header ? header.offsetHeight : 0;
         let targetPosition = 0;
 
-        // If target is the page top or the header itself, scroll to top of page (0)
         if (targetId === '#top' || targetElement === header) {
           targetPosition = 0;
         } else {
-          // Offset by sticky header height for section targets
-          const headerHeight = header ? header.offsetHeight : 0;
           targetPosition = Math.max(
             0,
             targetElement.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - headerHeight
           );
         }
 
-        const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
-        window.scrollTo({
-          top: targetPosition,
-          behavior: behavior
-        });
+        // If Lenis is available, use its momentum-driven smooth scroll
+        if (lenisInstance && !prefersReducedMotion.matches) {
+          if (targetId === '#top' || targetElement === header) {
+            lenisInstance.scrollTo(0, { duration: 1.35 });
+          } else {
+            lenisInstance.scrollTo(targetElement, {
+              offset: -headerHeight,
+              duration: 1.35,
+            });
+          }
+        } else {
+          // Native smooth scroll fallback
+          const behavior = prefersReducedMotion.matches ? 'auto' : 'smooth';
+          window.scrollTo({
+            top: targetPosition,
+            behavior: behavior
+          });
+        }
 
         // Set focus to the target element for screen readers and keyboard users
         if (!targetElement.hasAttribute('tabindex')) {
@@ -203,11 +253,170 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // -------------------------------------------------------------------------
+  // 7. Certificate Lightbox Modal
+  // -------------------------------------------------------------------------
+  const initCertificateModal = () => {
+    const modal = document.getElementById('cert-modal');
+    const modalBackdrop = document.getElementById('modal-backdrop');
+    const modalClose = document.getElementById('modal-close');
+    const modalImg = document.getElementById('modal-cert-img');
+    const modalTitle = document.getElementById('modal-cert-title');
+    const modalLink = document.getElementById('modal-cert-link');
+
+    if (!modal || !modalImg) return;
+
+    let previousActiveElement = null;
+
+    const openModal = (src, title) => {
+      previousActiveElement = document.activeElement;
+      modalImg.src = src;
+      modalImg.alt = title || 'Certificate image';
+      if (modalTitle) modalTitle.textContent = title || 'Certificate Preview';
+      if (modalLink) modalLink.href = src;
+
+      modal.removeAttribute('hidden');
+      document.body.classList.add('modal-open');
+
+      if (lenisInstance) {
+        lenisInstance.stop();
+      }
+
+      if (modalClose) {
+        modalClose.focus();
+      }
+    };
+
+    const closeModal = () => {
+      modal.setAttribute('hidden', '');
+      document.body.classList.remove('modal-open');
+      modalImg.removeAttribute('src');
+
+      if (lenisInstance) {
+        lenisInstance.start();
+      }
+
+      if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+        previousActiveElement.focus();
+      }
+    };
+
+    // Attach click listeners to all certificate preview buttons/overlays
+    const triggers = document.querySelectorAll('[data-cert-src]');
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', (event) => {
+        event.preventDefault();
+        const src = trigger.getAttribute('data-cert-src');
+        const title = trigger.getAttribute('data-cert-title') || '';
+        if (src) {
+          openModal(src, title);
+        }
+      });
+    });
+
+    if (modalClose) {
+      modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalBackdrop) {
+      modalBackdrop.addEventListener('click', closeModal);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !modal.hasAttribute('hidden')) {
+        closeModal();
+      }
+    });
+  };
+
+  // -------------------------------------------------------------------------
+  // 8. Automatic File Download Handler (Forces download instead of PDF viewer)
+  // -------------------------------------------------------------------------
+  const initAutoDownloads = () => {
+    const triggerBlobDownload = (blob, filename) => {
+      // Force application/octet-stream MIME type to prevent browser internal PDF viewer interception
+      const octetBlob = new Blob([blob], { type: 'application/octet-stream' });
+      const blobUrl = window.URL.createObjectURL(octetBlob);
+      const downloadLink = document.createElement('a');
+      downloadLink.style.display = 'none';
+      downloadLink.href = blobUrl;
+      downloadLink.download = filename;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
+      setTimeout(() => {
+        window.URL.revokeObjectURL(blobUrl);
+        downloadLink.remove();
+      }, 1500);
+    };
+
+    const downloadFileDirectly = (url, filename, button) => {
+      if (button) {
+        button.style.pointerEvents = 'none';
+        button.style.opacity = '0.7';
+      }
+
+      // XMLHttpRequest with responseType = 'blob' works reliably across both file:// and http(s)://
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'blob';
+
+      xhr.onload = () => {
+        if (button) {
+          button.style.pointerEvents = '';
+          button.style.opacity = '';
+        }
+
+        if (xhr.status === 200 || (xhr.status === 0 && xhr.response && xhr.response.size > 0)) {
+          triggerBlobDownload(xhr.response, filename);
+        } else {
+          fallbackDirectDownload(url, filename);
+        }
+      };
+
+      xhr.onerror = () => {
+        if (button) {
+          button.style.pointerEvents = '';
+          button.style.opacity = '';
+        }
+        fallbackDirectDownload(url, filename);
+      };
+
+      xhr.send();
+    };
+
+    const fallbackDirectDownload = (url, filename) => {
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = filename;
+      link.target = '_self';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => link.remove(), 500);
+    };
+
+    // Attach to all elements with download attribute or .js-download-btn
+    const downloadElements = document.querySelectorAll('a[download], .js-download-btn');
+    downloadElements.forEach((el) => {
+      el.addEventListener('click', (event) => {
+        event.preventDefault();
+        const url = el.getAttribute('href');
+        const filename = el.getAttribute('download') || el.dataset.filename || 'document.pdf';
+        if (url) {
+          downloadFileDirectly(url, filename, el);
+        }
+      });
+    });
+  };
+
   // Initialize all interactive modules
+  initLenis();
   initFooterYear();
   initMobileNav();
   initSmoothScroll();
   initActiveNavHighlight();
   initProfileImageFallback();
   initPlaceholderLinks();
+  initCertificateModal();
+  initAutoDownloads();
 });

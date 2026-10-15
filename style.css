@@ -26,11 +26,11 @@
   --accent-border: #bad0d2;
 
   /* Borders & Shadows */
-  --border-light: #e4e3dd;
-  --border-subtle: #ecebe6;
-  --border-hover: #bab9b0;
-  --shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
-  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --border-light: #dedcd4;
+  --border-subtle: #eae9e2;
+  --border-hover: #adaaa0;
+  --shadow-subtle: 0 2px 6px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+  --shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.08);
 
   /* Typography */
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
@@ -173,16 +173,17 @@ ul {
 
 .section-heading {
   font-size: var(--font-size-xl);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--text-main);
   margin-bottom: var(--space-xs);
 }
 
 .section-divider {
-  width: 32px;
-  height: 2px;
+  width: 36px;
+  height: 3px;
   background-color: var(--accent);
+  border-radius: 2px;
 }
 
 /* --------------------------------------------------------------------------
@@ -380,6 +381,12 @@ ul {
   background-color: var(--bg-subtle);
 }
 
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: var(--font-size-xs);
+  gap: 6px;
+}
+
 /* Hero Profile Image */
 .hero-media {
   display: flex;
@@ -540,6 +547,7 @@ ul {
   padding: var(--space-lg);
   display: flex;
   flex-direction: column;
+  box-shadow: var(--shadow-subtle);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -581,7 +589,7 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-xs);
-  margin-bottom: var(--space-md);
+  margin-top: auto;
 }
 
 .tech-tag {
@@ -625,6 +633,585 @@ ul {
 .link-separator {
   color: var(--border-hover);
   font-size: var(--font-size-xs);
+}
+
+/* --------------------------------------------------------------------------
+   7b. Internship Experience Section
+   -------------------------------------------------------------------------- */
+.internship-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  box-shadow: var(--shadow-subtle);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.internship-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+}
+
+.internship-header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.internship-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xs);
+}
+
+.internship-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  background-color: var(--accent-soft);
+  border: 1px solid var(--accent-border);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.internship-timeline {
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  color: var(--text-faint);
+}
+
+.internship-role {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-main);
+  letter-spacing: -0.01em;
+}
+
+.internship-company {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+.internship-company strong {
+  color: var(--text-main);
+}
+
+.company-signatory {
+  color: var(--text-faint);
+  font-size: var(--font-size-xs);
+}
+
+.internship-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.internship-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
+.internship-document-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+}
+
+.document-info {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.document-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.document-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.document-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.document-subtitle {
+  font-size: var(--font-size-xs);
+  color: var(--text-faint);
+}
+
+.document-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   7c. Certifications Section
+   -------------------------------------------------------------------------- */
+.certificates-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-lg);
+}
+
+.cert-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-subtle);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+}
+
+.cert-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.cert-media {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background-color: #f7f6f2;
+  border-bottom: 1px solid var(--border-subtle);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cert-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--space-sm);
+  transition: transform var(--transition-normal);
+}
+
+.cert-card:hover .cert-img {
+  transform: scale(1.03);
+}
+
+.cert-preview-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(25, 26, 28, 0.65);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity var(--transition-normal);
+  color: #ffffff;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+}
+
+.cert-media:hover .cert-preview-overlay,
+.cert-preview-overlay:focus {
+  opacity: 1;
+}
+
+.cert-content {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: var(--space-sm);
+}
+
+.cert-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.cert-issuer-badge {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+}
+
+.cert-redhat {
+  background-color: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.cert-udemy {
+  background-color: #f3e8ff;
+  color: #6b21a8;
+  border: 1px solid #e9d5ff;
+}
+
+.cert-type {
+  font-size: var(--font-size-xs);
+  color: var(--text-faint);
+  font-weight: 500;
+}
+
+.cert-title {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--text-main);
+  line-height: var(--line-height-tight);
+}
+
+.cert-description {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  line-height: var(--line-height-relaxed);
+  flex-grow: 1;
+}
+
+.cert-credential-info {
+  font-size: var(--font-size-xs);
+  color: var(--text-faint);
+  background-color: var(--bg-subtle);
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.credential-id code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--accent);
+}
+
+.cert-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xs);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+  margin-top: auto;
+}
+
+/* --------------------------------------------------------------------------
+   7d. Resume Section
+   -------------------------------------------------------------------------- */
+.resume-card {
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  box-shadow: var(--shadow-subtle);
+}
+
+.resume-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: var(--space-lg);
+}
+
+.resume-name {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.015em;
+}
+
+.resume-subtitle {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.resume-location {
+  font-size: var(--font-size-xs);
+  color: var(--text-faint);
+  margin-top: 4px;
+}
+
+.resume-cta-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.resume-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-xl);
+}
+
+.resume-block-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin-bottom: var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: var(--space-2xs);
+}
+
+.resume-item {
+  margin-bottom: var(--space-sm);
+}
+
+.resume-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-item-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.resume-item-desc {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  line-height: var(--line-height-normal);
+  margin-top: 2px;
+}
+
+.resume-skills-block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.resume-skills-line {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+.skill-label {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.resume-embed-container {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background-color: var(--bg-surface);
+}
+
+.resume-embed-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 14px;
+  background-color: var(--bg-subtle);
+  border-bottom: 1px solid var(--border-light);
+  font-size: var(--font-size-xs);
+}
+
+.embed-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dot-red {
+  background-color: #ef4444;
+}
+
+.dot-yellow {
+  background-color: #f59e0b;
+}
+
+.dot-green {
+  background-color: #10b981;
+}
+
+.embed-filename {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.embed-external-link {
+  color: var(--accent);
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.embed-external-link:hover {
+  color: var(--accent-hover);
+  text-decoration: underline;
+}
+
+.resume-iframe {
+  width: 100%;
+  height: 520px;
+  border: none;
+  display: block;
+  background-color: #525659;
+}
+
+/* --------------------------------------------------------------------------
+   7e. Certificate Lightbox Modal
+   -------------------------------------------------------------------------- */
+body.modal-open {
+  overflow: hidden;
+}
+
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
+
+.cert-modal[hidden] {
+  display: none !important;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  cursor: pointer;
+}
+
+.modal-dialog {
+  position: relative;
+  z-index: 1001;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  max-width: 840px;
+  width: 100%;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalFadeIn 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.modal-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.modal-close {
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-muted);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.modal-close:hover {
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+}
+
+.modal-body {
+  padding: var(--space-md);
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  min-height: 300px;
+}
+
+.modal-cert-image {
+  max-width: 100%;
+  max-height: 65vh;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--space-xs) var(--space-md);
+  border-top: 1px solid var(--border-light);
+  background-color: var(--bg-surface);
 }
 
 /* --------------------------------------------------------------------------
@@ -854,6 +1441,35 @@ ul {
     grid-template-columns: 1fr;
   }
 
+  .internship-document-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .document-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .certificates-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resume-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .resume-highlights-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .resume-iframe {
+    height: 380px;
+  }
+
   .section {
     padding-top: var(--space-2xl);
     padding-bottom: var(--space-2xl);
@@ -875,3 +1491,29 @@ ul {
     scroll-behavior: auto !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   12. Lenis Smooth Scroll Integration
+   -------------------------------------------------------------------------- */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Temporarily disable pointer events on iframes during momentum scrolling */
+html.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
